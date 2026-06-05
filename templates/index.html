@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hello World</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      overflow: hidden;
+      padding: 1rem;
+    }
+
+    /* Animated gradient background */
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating orbs for depth */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb-1 {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, #a855f7, transparent);
+      top: -100px;
+      left: -100px;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .orb-2 {
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, #3b82f6, transparent);
+      bottom: -80px;
+      right: -80px;
+      animation: float 10s ease-in-out infinite reverse;
+    }
+
+    .orb-3 {
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, #ec4899, transparent);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) scale(1); }
+      50%       { transform: translateY(-30px) scale(1.05); }
+    }
+
+    /* Glass card */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 24px;
+      padding: 3.5rem 3rem;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.37),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      animation: fadeInUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Badge / chip */
+    .badge {
+      display: inline-block;
+      background: rgba(168, 85, 247, 0.25);
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      color: #d8b4fe;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Main heading */
+    h1 {
+      font-size: clamp(2.4rem, 8vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #f8fafc 0%, #a78bfa 50%, #60a5fa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+      animation: fadeInUp 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(226, 232, 240, 0.75);
+      line-height: 1.7;
+      margin-bottom: 2.2rem;
+      animation: fadeInUp 0.9s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #a855f7, #3b82f6);
+      border-radius: 999px;
+      margin: 0 auto 2.2rem;
+      animation: fadeInUp 0.9s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    /* CTA button */
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.4rem;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      background: linear-gradient(135deg, #a855f7, #3b82f6);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 24px rgba(168, 85, 247, 0.45);
+      animation: fadeInUp 0.9s 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0);
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(168, 85, 247, 0.6);
+    }
+
+    .btn:hover::before {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Footer note */
+    .footer-note {
+      margin-top: 2rem;
+      font-size: 0.72rem;
+      color: rgba(148, 163, 184, 0.55);
+      animation: fadeInUp 0.9s 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .footer-note span {
+      color: rgba(168, 85, 247, 0.7);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .card {
+        padding: 2.5rem 1.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background orbs -->
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+
+  <!-- Glass card -->
+  <main class="card" role="main">
+    <div class="badge">✦ Welcome</div>
+
+    <h1>Hello World</h1>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <p class="subtitle">
+      A beautifully crafted starting point built with<br />
+      <strong style="color: rgba(255,255,255,0.85); font-weight:600;">Flask</strong>
+      &amp;
+      <strong style="color: rgba(255,255,255,0.85); font-weight:600;">Python</strong>
+      — where every great project begins.
+    </p>
+
+    <a href="#" class="btn" role="button">Get Started &rarr;</a>
+
+    <p class="footer-note">
+      Powered by <span>Flask 3.0</span> &middot; Python 3.11
+    </p>
+  </main>
+
+</body>
+</html>
